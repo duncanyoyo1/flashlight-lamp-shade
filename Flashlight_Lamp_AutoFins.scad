@@ -2,7 +2,7 @@ $fa = 0.1;
 $fs = 0.1;
 
 //Select Light Model
-model = "D3AA"; // ["D3AA", "DA1K", "D4K", "D4V2", "D4SV2", "KR1", "KR4", "K1", "K9.3", "KC1", "D1", "D1K", "D18", "DM1.12", "DM11", "M44", "Custom"]
+model = "D3AA"; // ["D3AA", "DA1K", "D4K", "D4V2", "D4SV2", "KR1", "KR4", "K1", "K9.3", "KC1", "D1", "D1K", "D18", "DM1.12", "DM11", "M44", "TS10", "TS11", "TS25", "S21E", "Custom"]
 
 //Only used if model = "Custom"
 custom_head_diameter = 32; // [10:60]
@@ -25,6 +25,10 @@ flashlight_head_diameter =
     model == "DM1.12" ? 63.23 :
     model == "DM11"   ? 40.23 :
     model == "M44"    ? 58.23 :
+    model == "TS10"   ? 21.26 :
+    model == "TS11"   ? 40.20 :
+    model == "TS25"   ? 29.85 :
+    model == "S21E"   ? 27.60 :
     model == "Custom" ? custom_head_diameter :
     assert(false, str("Invalid model: ", model));
     echo("model=", model, " -> head_dia=", flashlight_head_diameter);
