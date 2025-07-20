@@ -18,8 +18,8 @@ No external libraries required. Everything is built from scratch.
 
 ## 📸 Example Photos & Prints
 
-> *(Add photos of printed versions here)*  
-> *(Optional: a screenshot of the Customizer UI)*
+> *(ToDo - Add photos of printed versions here)*  
+> *(ToDo - Add screenshot of the Customizer UI)*
 
 ---
 
