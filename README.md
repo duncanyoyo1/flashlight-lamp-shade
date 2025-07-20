@@ -19,7 +19,7 @@ No external libraries required. Everything is built from scratch.
 ## 📸 Example Photos & Prints
 
 > *(ToDo - Add photos of printed versions here)*  
-> *(ToDo - Add screenshot of the Customizer UI)*
+<img alt="OpenSCAD Customizer" src="https://github.com/user-attachments/assets/dc74c5bf-18c6-4519-9068-669cd1a3006c" />
 
 ---
 
