@@ -12,18 +12,18 @@ flashlight_head_diameter =
     model == "D3AA"   ? 24.03 :
     model == "DA1K"   ? 30.15 :
     model == "D4K"    ? 28.03 :
-    model == "D4V2"    ? 28.03 :
-    model == "D4SV2"    ? 39.03 :
+    model == "D4V2"   ? 28.03 :
+    model == "D4SV2"  ? 39.03 :
     model == "KR1"    ? 35.03 :
     model == "KR4"    ? 29.03 :
-    model == "K1"    ? 72.03 :
-    model == "K9.3"    ? 52.00 :
+    model == "K1"     ? 72.03 :
+    model == "K9.3"   ? 52.00 :
     model == "KC1"    ? 14.28 :
-    model == "D1"    ? 35.03 :
+    model == "D1"     ? 35.03 :
     model == "D1K"    ? 35.03 :
     model == "D18"    ? 58.03 :
-    model == "DM1.12"    ? 63.03 :
-    model == "DM11"    ? 40.03 :
+    model == "DM1.12" ? 63.03 :
+    model == "DM11"   ? 40.03 :
     model == "M44"    ? 58.03 :
     model == "Custom" ? custom_head_diameter :
     assert(false, str("Invalid model: ", model));
