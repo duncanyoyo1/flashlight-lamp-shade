@@ -5,7 +5,7 @@ $fs = 0.1; // Increase these if you have issues rendering
 model = "D3AA"; // ["D3AA", "DA1K", "D4K", "D4V2", "D4SV2", "KR1", "KR4", "K1", "K9.3", "KC1", "D1", "D1K", "D18", "DM1.12", "DM11", "M44", "TS10", "TS11", "TS25", "S21E", "Custom"]
 
 //Only used if model = "Custom"
-custom_head_diameter = 32; // [10:60]
+custom_head_diameter = 32; // [10:120]
 
 //Head Diameter
 flashlight_head_diameter =
