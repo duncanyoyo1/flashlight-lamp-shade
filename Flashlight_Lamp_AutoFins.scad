@@ -1,5 +1,5 @@
-$fa = 0.1;
-$fs = 0.1;
+$fa = 0.1; // Quality Settings
+$fs = 0.1; // Increase these if you have issues rendering
 
 //Select Light Model
 model = "D3AA"; // ["D3AA", "DA1K", "D4K", "D4V2", "D4SV2", "KR1", "KR4", "K1", "K9.3", "KC1", "D1", "D1K", "D18", "DM1.12", "DM11", "M44", "TS10", "TS11", "TS25", "S21E", "Custom"]
@@ -10,7 +10,7 @@ custom_head_diameter = 32; // [10:60]
 //Head Diameter
 flashlight_head_diameter =
     model == "D3AA"   ? 24.25 :
-    model == "DA1K"   ? 30.25 :
+    model == "DA1K"   ? 30.28 :
     model == "D4K"    ? 28.23 :
     model == "D4V2"   ? 28.23 :
     model == "D4SV2"  ? 39.23 :
