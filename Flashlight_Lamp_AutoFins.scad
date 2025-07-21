@@ -26,7 +26,7 @@ flashlight_head_diameter =
     model == "DM11"   ? 40.23 :
     model == "M44"    ? 58.23 :
     model == "TS10"   ? 21.26 :
-    model == "TS11"   ? 40.20 :
+    model == "TS11"   ? 40.28 :
     model == "TS25"   ? 29.85 :
     model == "S21E"   ? 27.60 :
     model == "Custom" ? custom_head_diameter :
