@@ -33,7 +33,7 @@ flashlight_head_diameter =
     assert(false, str("Invalid model: ", model));
     echo("model=", model, " -> head_dia=", flashlight_head_diameter);
 
-wall_thickness = 2.5;                 // [0.1:10]
+wall_thickness = 1.2;                 // [0.1:10]
 
 //Ratios (editable via Customizer)
 // The ratio of the Flashlight Head to the Lamp Shade Diameter
@@ -125,7 +125,7 @@ module inner_cone() {
 
     // Flat cap ring at the top
     translate([0, 0, inner_height - 0.01])
-        cylinder(r = top_outer / 2, h = wall_thickness / 2);
+        cylinder(r = top_outer / 2, h = wall_thickness);
 }
 
 
