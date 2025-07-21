@@ -11,7 +11,7 @@ custom_head_diameter = 32; // [10:60]
 flashlight_head_diameter =
     model == "D3AA"   ? 24.25 :
     model == "DA1K"   ? 30.32 :
-    model == "D4K"    ? 28.23 :
+    model == "D4K"    ? 28.32 :
     model == "D4V2"   ? 28.23 :
     model == "D4SV2"  ? 39.23 :
     model == "KR1"    ? 35.23 :
@@ -74,7 +74,7 @@ fin_depth = outer_height + 2;
 
 // --- Cutout dimensions ---
 cutout_width = arm_width;
-cutout_height = arm_thickness;
+cutout_height = straight_h / 1.75;
 cutout_depth = wall_thickness + 1.5;
 
 // --- Helpers ---
