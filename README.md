@@ -20,7 +20,7 @@ No external libraries required. Everything is built from scratch.
 
 <img alt="DA1K/D3AA" src="https://github.com/user-attachments/assets/79a6a0b5-722e-4119-a89e-d4271b8d6028" />
 <img alt="D3AA" src="https://github.com/user-attachments/assets/5d3564c7-62b3-40de-a5b1-a517af057b0a" />
-<img alt="OpenSCAD Customizer" src="https://github.com/user-attachments/assets/dc74c5bf-18c6-4519-9068-669cd1a3006c" />
+<img alt="OpenSCAD Customizer" src="https://github.com/user-attachments/assets/d5c4ce52-9ab2-4fa2-ad33-b3dfe1607112" />
 
 ---
 
