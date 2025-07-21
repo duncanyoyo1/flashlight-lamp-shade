@@ -125,8 +125,7 @@ module inner_cone() {
 
     // Flat cap ring at the top
     translate([0, 0, inner_height - 0.01])
-        linear_extrude(height = wall_thickness / 2)
-            circle(r = top_outer / 2);
+        cylinder(r = top_outer / 2, h = wall_thickness / 2);
 }
 
 
