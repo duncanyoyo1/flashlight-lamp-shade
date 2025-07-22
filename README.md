@@ -11,7 +11,7 @@ No external libraries required. Everything is built from scratch.
 - 📏 **Supports common flashlight models** (D3AA, D4K, DA1K) or your own custom head diameter.
 - 🔩 **Fully parametric design** — adjust width, height, angles, arm count, and more.
 - 🌪️ **Auto-generated vertical fins** with intelligent spacing and conical correction.
-- 🔄 **Customizable cutouts and arm connectors** for improved customization and fit.
+- 🔄 **Customizable cutouts and arm connectors** for improved look and fit.
 - 🛠️ Works with OpenSCAD Customizer UI (Snap/Flatpak nightly versions included).
 
 ---
