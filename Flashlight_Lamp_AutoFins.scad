@@ -11,7 +11,7 @@ custom_head_diameter = 32; // [10:120]
 flashlight_head_diameter =
     model == "D3AA"   ? 24.25 :
     model == "DA1K"   ? 30.32 :
-    model == "D4K"    ? 28.32 :
+    model == "D4K"    ? 28.30 :
     model == "D4V2"   ? 28.23 :
     model == "D4SV2"  ? 39.23 :
     model == "KR1"    ? 35.23 :
