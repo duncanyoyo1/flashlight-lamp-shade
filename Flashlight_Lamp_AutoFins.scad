@@ -1,13 +1,15 @@
-$fa = 0.1; // Quality Settings
-$fs = 0.1; // Increase these if you have issues rendering
+//Quality Settings
+$fa = 0.1;
+// Increase these for faster render
+$fs = 0.1; 
 
-//Select Light Model
+// Select Light Model
 model = "D3AA"; // ["D3AA", "DA1K", "D4K", "D4V2", "D4SV2", "KR1", "KR4", "K1", "K9.3", "KC1", "D1", "D1K", "D18", "DM1.12", "DM11", "M44", "TS10", "TS11", "TS25", "S21E", "Custom"]
 
-//Only used if model = "Custom"
+// Only used if model = "Custom" Flashlight head diameter in mm
 custom_head_diameter = 32; // [10:120]
 
-//Head Diameter
+// Head Diameter (resolved from model)
 flashlight_head_diameter =
     model == "D3AA"   ? 24.25 :
     model == "DA1K"   ? 30.32 :
@@ -31,46 +33,61 @@ flashlight_head_diameter =
     model == "S21E"   ? 27.60 :
     model == "Custom" ? custom_head_diameter :
     assert(false, str("Invalid model: ", model));
-    echo("model=", model, " -> head_dia=", flashlight_head_diameter);
 
-wall_thickness = 1.2;                 // [0.1:10]
-
-//Ratios (editable via Customizer)
-// The ratio of the Flashlight Head to the Lamp Shade Diameter
-outer_diameter_ratio = 3.33;          // [0.5:5.0]
-//The ratio of the Flashlight Head to Lamp Height
-outer_height_ratio   = 2.50;          // [0.5:5.0]
-//The ratio of the Flashlight Head to Inner Diffuser Height
-inner_height_ratio   = 1.75;          // [0.5:5.0]
+echo("model=", model, " -> head_dia=", flashlight_head_diameter);
 
 // --- Parameters (editable via Customizer) ---
 
-//Angle of the Lamp Shade and Diffuser Cone
-cone_angle = 8;                       // [1:25]
-//How many arms connect the shade to the diffuser
-arm_count = 3;                        // [1:16]
-//Arm Width
-arm_width = 3;                        // [0.1:10]
-//Arm Thickness
-arm_thickness = 4;                    // [0.1:10]
-//How tall the cylinder below the diffuser cone is
-straight_h = 8;                       // [0.1:20]
+// Wall thickness of all surfaces
+wall_thickness = 1.2; // [0.1:10]
 
+// Angle of the Lamp Shade and Diffuser Cone
+cone_angle = 8; // [1:25]
+
+// How many arms connect the shade to the diffuser
+arm_count = 3; // [1:16]
+
+// Width of arms connecting shade
+arm_width = 3; // [0.1:10]
+
+// Thickness of arms connecting shade
+arm_thickness = 4; // [0.1:10]
+
+// How tall the cylinder below the diffuser cone is
+straight_h = 8; // [0.1:20]
+
+// --- Ratios (editable via Customizer) ---
+
+// The ratio of the Flashlight Head to the Lamp Shade Diameter
+outer_diameter_ratio = 3.33; // [0.5:5.0]
+
+// The ratio of the Flashlight Head to Lamp Height
+outer_height_ratio = 2.50; // [0.5:5.0]
+
+// The ratio of the Flashlight Head to Inner Diffuser Height
+inner_height_ratio = 1.75; // [0.5:5.0]
+
+// --- Derived Dimensions ---
 outer_diameter = flashlight_head_diameter * outer_diameter_ratio;
-outer_height   = flashlight_head_diameter * outer_height_ratio;
-inner_height   = flashlight_head_diameter * inner_height_ratio;
+outer_height = flashlight_head_diameter * outer_height_ratio;
+inner_height = flashlight_head_diameter * inner_height_ratio;
 
 // --- Fin settings ---
-// Set to -1 for auto
-fin_count_input = -1;  // [-1:1:200]  // -1 = Auto
-//How far the fins protrude from the shade
-fin_height = 1.25;                    // [0.1:10]
-//How wide the fins are
-fin_width = 0.8;                      // [0.1:10]
-//Ratio of the distance between the fins and their thickness
-gap_multiplier = 1.0;                 // [0.1:10]
-fin_depth = outer_height + 2;
 
+// Fin count (-1 for auto, 0 = none, >0 = manual)
+fin_count_input = -1; // [-1:1:200]
+
+// How far the fins protrude from the shade
+fin_height = 1.25; // [0.1:10]
+
+// How wide the fins are
+fin_width = 0.8; // [0.1:10]
+
+// Ratio of the distance between the fins and their thickness
+gap_multiplier = 1.0; // [0.1:10]
+
+// How tall the fins run
+fin_depth = outer_height + 2;
 
 // --- Cutout dimensions ---
 cutout_width = arm_width;
@@ -79,8 +96,7 @@ cutout_depth = wall_thickness + 1.5;
 
 // --- Helpers ---
 function cone_top_dia(d, h) = d - 2 * h * tan(cone_angle);
-function cone_radius_at_z(base_radius, height, z) =
-    base_radius - z * tan(cone_angle);
+function cone_radius_at_z(base_radius, height, z) = base_radius - z * tan(cone_angle);
 
 // --- Cutouts between arms ---
 module inner_cutouts() {
@@ -111,13 +127,9 @@ module inner_cone() {
             // Conical taper above
             difference() {
                 translate([0, 0, straight_h])
-                    cylinder(h = taper_h,
-                             r1 = outer_dia / 2,
-                             r2 = top_outer / 2);
+                    cylinder(h = taper_h, r1 = outer_dia / 2, r2 = top_outer / 2);
                 translate([0, 0, straight_h])
-                    cylinder(h = taper_h,
-                             r1 = flashlight_head_diameter / 2,
-                             r2 = top_inner / 2);
+                    cylinder(h = taper_h, r1 = flashlight_head_diameter / 2, r2 = top_inner / 2);
             }
         }
         inner_cutouts();
@@ -128,19 +140,14 @@ module inner_cone() {
         cylinder(d = top_outer, h = wall_thickness);
 }
 
-
 // --- Outer cone ---
 module outer_cone() {
     top_outer = cone_top_dia(outer_diameter, outer_height);
     top_inner = cone_top_dia(outer_diameter - 2 * wall_thickness, outer_height);
 
     difference() {
-        cylinder(h = outer_height,
-                 r1 = outer_diameter / 2,
-                 r2 = top_outer / 2);
-        cylinder(h = outer_height,
-                 r1 = (outer_diameter - 2 * wall_thickness) / 2,
-                 r2 = top_inner / 2);
+        cylinder(h = outer_height, r1 = outer_diameter / 2, r2 = top_outer / 2);
+        cylinder(h = outer_height, r1 = (outer_diameter - 2 * wall_thickness) / 2, r2 = top_inner / 2);
     }
 }
 
@@ -157,7 +164,7 @@ module outer_fins() {
     auto_count = floor(360 / desired_angle);
     fin_count = (fin_count_input == -1) ? auto_count : fin_count_input;
 
-    angle_step = 360 / fin_count;
+    angle_step = fin_count > 0 ? 360 / fin_count : 0;
     fin_angle = (fin_width / base_radius) * (180 / PI);
     actual_gap_angle = angle_step - fin_angle;
 
@@ -166,29 +173,31 @@ module outer_fins() {
     echo("fin_angle = ", fin_angle);
     echo("actual_gap_angle = ", actual_gap_angle);
 
-    difference() {
-        union() {
-            for (i = [0 : fin_count - 1]) {
-                angle = i * angle_step - fin_angle / 2;
+    if (fin_count > 0) {
+        difference() {
+            union() {
+                for (i = [0 : fin_count - 1]) {
+                    angle = i * angle_step - fin_angle / 2;
 
-                rotate([0, 0, angle])
-                    translate([base_radius - embed_depth, 0, -1])
-                        rotate([0, -cone_angle, 0])
-                            cube([fin_height + embed_depth, fin_width, fin_depth + 2], center = false);
+                    rotate([0, 0, angle])
+                        translate([base_radius - embed_depth, 0, -1])
+                            rotate([0, -cone_angle, 0])
+                                cube([fin_height + embed_depth, fin_width, fin_depth + 2], center = false);
+                }
             }
-        }
 
-        // Trim above and below
-        translate([0, 0, outer_height])
-            cylinder(h = 10, r = outer_diameter + 5);
-        translate([0, 0, -10])
-            cylinder(h = 10, r = outer_diameter + 5);
+            // Trim above and below
+            translate([0, 0, outer_height])
+                cylinder(h = 10, r = outer_diameter + 5);
+            translate([0, 0, -10])
+                cylinder(h = 10, r = outer_diameter + 5);
+        }
     }
 }
 
 // --- Arms ---
 module raw_arms() {
-    inner_attach_r = (flashlight_head_diameter / 2);
+    inner_attach_r = flashlight_head_diameter / 2;
     outer_attach_r = (outer_diameter / 2) - wall_thickness;
     arm_len = outer_attach_r - inner_attach_r;
 
@@ -204,10 +213,8 @@ module raw_arms() {
 module connecting_arms() {
     difference() {
         raw_arms();
-
         translate([0, 0, -1])
-            cylinder(h = arm_thickness + 2,
-                     d = flashlight_head_diameter);
+            cylinder(h = arm_thickness + 2, d = flashlight_head_diameter);
     }
 }
 
