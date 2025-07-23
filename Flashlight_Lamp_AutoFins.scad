@@ -124,8 +124,8 @@ module inner_cone() {
     }
 
     // Flat cap ring at the top
-    translate([0, 0, inner_height - 0.01])
-        cylinder(r = top_outer / 2, h = wall_thickness);
+    translate([0, 0, inner_height - wall_thickness])
+        cylinder(d = top_outer, h = wall_thickness);
 }
 
 
