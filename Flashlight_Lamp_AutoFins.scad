@@ -207,7 +207,7 @@ module connecting_arms() {
 
         translate([0, 0, -1])
             cylinder(h = arm_thickness + 2,
-                     r = flashlight_head_diameter / 2);
+                     d = flashlight_head_diameter);
     }
 }
 
